@@ -12,18 +12,18 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class SimpleGetTest {
-    private static final Logger LOGGER = LogManager.getLogger(SimpleGetTest.class);
+public class GetTestWithQueryParameter {
+    private static final Logger LOGGER = LogManager.getLogger(GetTestWithQueryParameter.class);
 
     @Test
-    public void getAllUsers(){
-        LOGGER.info("-----------API Test: Get All Users---------");
+    public void getUsersWithQueryParameter(){
+        LOGGER.info("-----------API Test: Get All Users with Query Parameter---------");
 
         RestAssured.baseURI = "https://reqres.in/api/users";
 
         RequestSpecification httpRequest = RestAssured.given();
 
-        Response response = httpRequest.request(Method.GET);
+        Response response = httpRequest.queryParam("page","2").request(Method.GET);
         LOGGER.debug(response.prettyPrint());
 
         Assert.assertEquals(response.getStatusCode(),200);
@@ -31,15 +31,13 @@ public class SimpleGetTest {
         JsonPath jsonPath = response.jsonPath();
         List<String> listEmails = jsonPath.get("data.email");
 
-        String expectedEmailId = "george.bluth@reqres.in" +
-                "";
+        String expectedEmailId = "michael.lawson@reqres.in";
         boolean emailExist = listEmails.contains(expectedEmailId);
 
         Assert.assertTrue(emailExist, expectedEmailId + " does not exists");
 
-        LOGGER.info("-----------API Test: Get All Users---------");
+        LOGGER.info("-----------End Test: Get All Users with Query Parameter---------");
 
 
     }
-
 }

@@ -6,11 +6,6 @@
         <packages>
             <package name="automation_test.mortgage_calculator"/>
         </packages>
-        <classes>
-            <class name="automation_test.mortgage_calculator.CalculateMortgageRate" />
-            <class name="automation_test.mortgage_calculator.CalculateMortgageRate" />
-        </classes>
-
     </test>
 
     <test name="PHP_Travel">
@@ -18,5 +13,10 @@
             <class name="automation_test.php_travel.TestNGWebDriver"/>
 
         </classes>
+    </test>
+    <test name = "API_Test">
+        <packages>
+            <package name="api_test"/>
+        </packages>
     </test>
 </suite>
